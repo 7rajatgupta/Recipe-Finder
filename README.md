@@ -1,5 +1,7 @@
 ### Recipe Finder App
+#### Find dishes with your favorite food :)
 
-#### Search up the web and find any recipe you'd like to cook.
+![recipe-finder](https://i.ibb.co/VxhDTM8/recipe-finder.png)
+
 
 ###### Created using React with Hooks and RecipeAPI.
