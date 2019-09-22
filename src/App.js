@@ -10,9 +10,6 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(" ");
   const [query, setQuery] = useState("");
-  const [message, setMessage] = useState(
-    "Yo ! What you wanna cook today ? Search "
-  );
   // TODO: &from=0&to=3&calories=591-722&health=alcohol-free
   const makeGetRequest = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
@@ -22,6 +19,7 @@ const App = () => {
     const data = await response.json();
 
     // * Set the state after getting the data from the api:
+    console.log(data.hits);
     setRecipes(data.hits);
   };
 
@@ -40,37 +38,46 @@ const App = () => {
     event.preventDefault();
     if (search !== " " && search !== "") {
       setQuery(search);
-      setMessage("");
       setSearch("");
-    }
-    if (search === "") {
-      setMessage("Yo, type something first !");
     }
   };
 
   return (
     <div className="App">
-      <form className="form-controls search-form" onSubmit={getResults}>
-        <input
-          className=" form-controls input search-bar"
-          type="text"
-          value={search}
-          onChange={updateSearch}
-        />
-        <button className="button button-primary search-button" type="submit">
-          Yo find ma recipe
-        </button>
-      </form>
-      <h3>{message}</h3>
-      {recipes.map(recipe => (
-        <Recipe
-          key={recipe.recipe.label}
-          title={recipe.recipe.label}
-          calories={recipe.recipe.calories}
-          image={recipe.recipe.image}
-          ingredients={recipe.recipe.ingredients}
-        />
-      ))}
+      <div className="container mt-5">
+        <h2 className="text-primary text-center mb-3">Recipe Finder</h2>
+        <h6 className="text-secondary text-center mb-5">
+          Find your favorite recipies.
+        </h6>
+
+        <div className="search-form">
+          <form className="form-group search-form" onSubmit={getResults}>
+            <input
+              className="form-control search-bar mb-3"
+              type="text"
+              value={search}
+              onChange={updateSearch}
+            />
+            <button className="btn btn-primary" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+      <div className="mt-5">
+        <div className="card-group">
+          {recipes.map(recipe => (
+            <Recipe
+              key={recipe.recipe.calories}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+              healthLabels={recipe.recipe.healthLabels}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
