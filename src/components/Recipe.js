@@ -3,7 +3,7 @@ import React from "react";
 const Recipe = ({ title, calories, image, ingredients, healthLabels }) => {
   if (title) {
     return (
-      <div>
+      <div style={{maxHeight: '12vh', overflow: 'scroll', }}>
         <div className="card mb-3 recipe-card">
           <div className="row no-gutters">
             <div className="col-md-4">
@@ -36,12 +36,3 @@ const Recipe = ({ title, calories, image, ingredients, healthLabels }) => {
 };
 
 export default Recipe;
-
-/* <h1>{title}</h1>
-        <ol>
-          {ingredients.map(ingredient => (
-            <li>{ingredient.text}</li>
-          ))}
-        </ol>
-        <p>Calories count : {calories}</p>
-        <img src={image} alt="" /> */
