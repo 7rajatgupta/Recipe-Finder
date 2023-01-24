@@ -27,6 +27,7 @@ const App = () => {
     // ! This method runs first time the page renders and also, whatever event or state change you put in the [] parameter
     // * Fetch the data
     getRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   // * Update the search :
