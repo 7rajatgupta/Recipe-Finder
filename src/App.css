@@ -6,8 +6,11 @@
 }
 
 .recipe-card {
-  width: 400px;
-  height: 250px;
+  height: 15rem;
+  width: 25rem;
+  overflow: scroll;
+  padding: 0.5rem;
+  margin: 4px 8px;
 }
 
 .card-group {

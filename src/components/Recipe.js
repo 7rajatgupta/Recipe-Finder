@@ -3,7 +3,7 @@ import React from "react";
 const Recipe = ({ title, calories, image, ingredients, healthLabels }) => {
   if (title) {
     return (
-      <div style={{maxHeight: '12vh', overflow: 'scroll', }}>
+      <div>
         <div className="card mb-3 recipe-card">
           <div className="row no-gutters">
             <div className="col-md-4">
